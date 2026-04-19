@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riaz Ullah | Civil Engineer & QA/QC Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* ===== RESET & ROOT ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --navy3: #1a3a5c;
+    --gold: #c9a84c;
+    --gold2: #e8c878;
+    --gold3: #f5e199;
+    --white: #f8f6f0;
+    --gray: #8892a4;
+    --light: #ccd6f6;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ===== CUSTOM CURSOR ===== */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+  .cursor-follower {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+    opacity: 0.5;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ===== NOISE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed; top: 0; width: 100%;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: all 0.3s ease;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--gray); font-size: 0.85rem;
+    text-decoration: none; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    position: relative; transition: color 0.3s;
+    font-family: var(--font-mono);
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: all 0.3s ease !important;
+  }
+  .nav-cta:hover { background: rgba(201,168,76,0.1) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+  /* ===== HERO ===== */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 20% 80%, rgba(17,34,64,0.8) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-tag {
+    font-family: var(--font-mono);
+    color: var(--gold); font-size: 0.85rem;
+    letter-spacing: 3px; margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+  .hero-name .gold { color: var(--gold); }
+  .hero-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--gray); font-weight: 300;
+    margin: 16px 0 28px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+  .hero-title strong { color: var(--light); font-weight: 500; }
+  .hero-desc {
+    max-width: 540px; line-height: 1.8;
+    color: var(--gray); font-size: 1rem;
+    margin-bottom: 40px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 1s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy); padding: 14px 32px;
+    border: none; border-radius: 2px;
+    font-family: var(--font-body);
+    font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold); padding: 14px 32px;
+    border: 1px solid var(--gold); border-radius: 2px;
+    font-family: var(--font-body);
+    font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-2px);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--gray); font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-family: var(--font-mono);
+    animation: bounce 2s ease infinite;
+  }
+  .hero-scroll i { color: var(--gold); }
+  .hero-image-area {
+    position: absolute; right: 60px; top: 50%;
+    transform: translateY(-50%);
+    opacity: 0; animation: fadeIn 1s ease forwards 1.2s;
+  }
+  .profile-frame {
+    width: 320px; height: 380px;
+    position: relative;
+  }
+  .profile-frame::before {
+    content: '';
+    position: absolute; top: 20px; right: -20px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .profile-img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 2px;
+    position: relative; z-index: 1;
+    filter: grayscale(20%);
+    background: linear-gradient(135deg, var(--navy2), var(--navy3));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .profile-placeholder {
+    width: 320px; height: 380px;
+    background: linear-gradient(135deg, var(--navy2) 0%, var(--navy3) 100%);
+    border-radius: 2px; position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px; border: 1px solid rgba(201,168,76,0.2);
+  }
+  .profile-placeholder i { font-size: 5rem; color: var(--gold); opacity: 0.4; }
+  .profile-placeholder p { color: var(--gray); font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 1px; }
+  .stats-bar {
+    position: absolute; bottom: -50px; left: 0;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; padding: 16px 24px;
+    display: flex; gap: 32px; z-index: 2;
+    backdrop-filter: blur(10px);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--gold); display: block;
+  }
+  .stat-label { font-size: 0.7rem; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; font-family: var(--font-mono); }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 100px 60px; position: relative; }
+  .section-tag {
+    font-family: var(--font-mono); color: var(--gold);
+    font-size: 0.8rem; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::after {
+    content: ''; flex: 1; max-width: 80px;
+    height: 1px; background: var(--gold); opacity: 0.4;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--gray); max-width: 540px;
+    line-height: 1.8; margin-bottom: 60px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 20px 0 40px;
+  }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--navy2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .about-text p {
+    color: var(--gray); line-height: 1.9;
+    margin-bottom: 20px; font-size: 1rem;
+  }
+  .about-text p span { color: var(--gold); }
+  .about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .info-item { display: flex; flex-direction: column; gap: 4px; }
+  .info-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+  .info-value { font-size: 0.95rem; color: var(--light); font-weight: 500; }
+  .about-skills h3 {
+    font-family: var(--font-display); font-size: 1.4rem;
+    color: var(--white); margin-bottom: 24px;
+  }
+  .skill-bars { display: flex; flex-direction: column; gap: 20px; }
+  .skill-bar-item {}
+  .skill-bar-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .skill-bar-name { font-size: 0.85rem; color: var(--light); font-weight: 500; }
+  .skill-bar-pct { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); }
+  .skill-bar-track {
+    height: 4px; background: rgba(255,255,255,0.06);
+    border-radius: 2px; overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    border-radius: 2px;
+    width: 0; transition: width 1.5s ease;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  #experience { background: var(--navy); }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item { position: relative; margin-bottom: 48px; }
+  .timeline-dot {
+    position: absolute; left: -39px; top: 6px;
+    width: 14px; height: 14px;
+    background: var(--gold); border-radius: 50%;
+    border: 2px solid var(--navy);
+  }
+  .timeline-date {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--gold); letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: var(--font-display); font-size: 1.3rem;
+    font-weight: 700; color: var(--white); margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 0.9rem; color: var(--gold2); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .timeline-desc { color: var(--gray); line-height: 1.8; font-size: 0.95rem; }
+  .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.72rem;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+    padding: 4px 12px; border-radius: 2px;
+    background: rgba(201,168,76,0.05);
+  }
+
+  /* ===== SKILLS SECTION ===== */
+  #skills { background: var(--navy2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .skill-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px; padding: 32px;
+    transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .skill-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-card-icon { font-size: 2rem; margin-bottom: 16px; color: var(--gold); }
+  .skill-card h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); margin-bottom: 12px; }
+  .skill-card ul { list-style: none; }
+  .skill-card ul li {
+    color: var(--gray); font-size: 0.88rem;
+    padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-card ul li::before { content: '▸'; color: var(--gold); font-size: 0.7rem; }
+
+  /* ===== PROJECTS ===== */
+  #projects { background: var(--navy); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+  .project-card {
+    background: var(--navy2);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px; overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .project-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.3); }
+  .project-thumb {
+    height: 200px;
+    background: linear-gradient(135deg, var(--navy3) 0%, #0d2137 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .project-thumb-icon { font-size: 4rem; color: rgba(201,168,76,0.15); }
+  .project-thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, var(--navy2));
+  }
+  .project-thumb-label {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-size: 0.72rem;
+    padding: 4px 10px; border-radius: 2px;
+    font-family: var(--font-mono); letter-spacing: 1px;
+  }
+  .project-body { padding: 28px; }
+  .project-title { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); margin-bottom: 10px; }
+  .project-desc { color: var(--gray); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* ===== CERTIFICATIONS ===== */
+  #certifications { background: var(--navy2); }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .cert-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px; padding: 28px;
+    display: flex; gap: 20px; align-items: flex-start;
+    transition: all 0.3s ease;
+  }
+  .cert-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+  .cert-icon {
+    width: 48px; height: 48px; min-width: 48px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; display: flex;
+    align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1.3rem;
+  }
+  .cert-info h4 { color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+  .cert-info p { color: var(--gray); font-size: 0.82rem; line-height: 1.6; }
+  .cert-info span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); display: block; margin-top: 6px; }
+
+  /* ===== DOWNLOAD CV ===== */
+  #download { background: var(--navy); }
+  .download-wrapper {
+    background: linear-gradient(135deg, var(--navy2) 0%, #0d2137 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px; padding: 60px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .download-wrapper::before {
+    content: ''; position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .download-wrapper h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--white); margin-bottom: 12px;
+  }
+  .download-wrapper p { color: var(--gray); margin-bottom: 40px; font-size: 1rem; max-width: 500px; margin-left: auto; margin-right: auto; margin-bottom: 40px; }
+  .download-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 36px;
+    border-radius: 4px; font-family: var(--font-body);
+    font-weight: 600; font-size: 0.95rem;
+    letter-spacing: 0.5px; cursor: pointer;
+    text-decoration: none; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .btn-download::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(255,255,255,0.06);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .btn-download:hover::before { transform: translateX(0); }
+  .btn-dl-pdf {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    box-shadow: 0 4px 24px rgba(201,168,76,0.3);
+  }
+  .btn-dl-pdf:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(201,168,76,0.45); }
+  .btn-dl-word {
+    background: transparent;
+    color: var(--white); border: 1px solid rgba(255,255,255,0.2);
+  }
+  .btn-dl-word:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+  .btn-download-icon { font-size: 1.2rem; }
+  .download-note {
+    margin-top: 20px; font-family: var(--font-mono);
+    font-size: 0.75rem; color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--navy2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .contact-info h3 { font-family: var(--font-display); font-size: 1.6rem; color: var(--white); margin-bottom: 20px; }
+  .contact-info p { color: var(--gray); line-height: 1.8; margin-bottom: 36px; }
+  .contact-items { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-item-icon {
+    width: 44px; height: 44px; min-width: 44px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; display: flex;
+    align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1rem;
+    transition: all 0.3s;
+  }
+  .contact-item:hover .contact-item-icon { background: rgba(201,168,76,0.15); }
+  .contact-item-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; margin-bottom: 4px; }
+  .contact-item-value { color: var(--light); font-size: 0.95rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+  .form-group input, .form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px; padding: 14px 18px;
+    color: var(--white); font-family: var(--font-body);
+    font-size: 0.95rem; transition: all 0.3s;
+    outline: none; resize: none;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.04);
+  }
+  .form-group textarea { height: 140px; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(136,146,164,0.5); }
+  .btn-send {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy); border: none; padding: 15px 36px;
+    border-radius: 2px; font-family: var(--font-body);
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+    display: flex; align-items: center; gap: 10px; align-self: flex-start;
+  }
+  .btn-send:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.35); }
+  .social-links { display: flex; gap: 12px; margin-top: 32px; }
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; display: flex;
+    align-items: center; justify-content: center;
+    color: var(--gray); font-size: 1rem;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #06101d;
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--gold); }
+  .footer-copy { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); }
+  .footer-copy span { color: var(--gold); }
+  .back-top {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px; display: flex;
+    align-items: center; justify-content: center;
+    color: var(--gold); cursor: pointer;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .back-top:hover { background: rgba(201,168,76,0.1); transform: translateY(-3px); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: all 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy2); padding: 24px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    #home { padding: 120px 24px 80px; }
+    .hero-image-area { display: none; }
+    section { padding: 70px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .download-wrapper { padding: 40px 24px; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#home" class="logo">Riaz<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#download">Resume</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-tag">// Civil Engineer · QA/QC Specialist · GCC-Ready</p>
+    <h1 class="hero-name">Riaz<br><span class="gold">Ullah</span></h1>
+    <p class="hero-title">
+      <strong>Site Engineer & QA/QC Engineer</strong> — Targeting Gulf Construction
+    </p>
+    <p class="hero-desc">
+      B.Sc. Civil Engineering graduate from UET Peshawar (2025), PEC Registered. Specialized in site execution, quality assurance, construction documentation, and Gulf construction standards. Ready to deliver excellence on your next project.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+      <a href="#download" class="btn-outline"><i class="fas fa-file-arrow-down"></i> Download CV</a>
+      <a href="#projects" class="btn-outline"><i class="fas fa-folder-open"></i> View Projects</a>
+    </div>
+  </div>
+  <div class="hero-image-area">
+    <div class="profile-frame">
+      <div class="profile-placeholder">
+        <i class="fas fa-user-tie"></i>
+        <p>// Add Your Photo Here</p>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-num">2025</span><span class="stat-label">Graduate</span></div>
+      <div class="stat"><span class="stat-num">PEC</span><span class="stat-label">Registered</span></div>
+      <div class="stat"><span class="stat-num">GCC</span><span class="stat-label">Targeted</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">01. About Me</div>
+  <h2 class="section-title">Who I Am</h2>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I am <span>Riaz Ullah</span>, a Civil Engineering graduate from the University of Engineering and Technology (UET) Peshawar (Class of 2025), with a strong foundation in structural design, site engineering, and quality assurance in construction.
+      </p>
+      <p>
+        I am registered with the <span>Pakistan Engineering Council (PEC)</span> and actively targeting <span>Site Engineer and QA/QC Engineer</span> positions in the GCC region, particularly Dubai and the UAE — where my skills and commitment to construction excellence can deliver real impact.
+      </p>
+      <p>
+        My technical expertise spans construction documentation, quality control systems, AutoCAD drafting, Primavera P6 project scheduling, and MS Excel reporting — all aligned with Gulf construction industry standards including <span>ISO 9001, FIDIC contracts, and ASTM/BS testing standards.</span>
+      </p>
+      <p>
+        Beyond engineering, I am passionate about continuous learning, language development, and sharing knowledge in my community — values that shape both my professional and personal character.
+      </p>
+      <div class="about-info">
+        <div class="info-item"><span class="info-label">Name</span><span class="info-value">Riaz Ullah</span></div>
+        <div class="info-item"><span class="info-label">Degree</span><span class="info-value">B.Sc. Civil Engineering</span></div>
+        <div class="info-item"><span class="info-label">University</span><span class="info-value">UET Peshawar (2025)</span></div>
+        <div class="info-item"><span class="info-label">PEC Status</span><span class="info-value">Registered Engineer</span></div>
+        <div class="info-item"><span class="info-label">Location</span><span class="info-value">Bannu, KPK, Pakistan</span></div>
+        <div class="info-item"><span class="info-label">Target Market</span><span class="info-value">GCC / Dubai / UAE</span></div>
+        <div class="info-item"><span class="info-label">Target Roles</span><span class="info-value">Site / QA/QC Engineer</span></div>
+        <div class="info-item"><span class="info-label">Availability</span><span class="info-value">Immediately Available</span></div>
+      </div>
+    </div>
+    <div class="about-skills reveal">
+      <h3>Technical Proficiency</h3>
+      <div class="skill-bars">
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">AutoCAD (2D/3D Drafting)</span><span class="skill-bar-pct">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">Construction QA/QC Documentation</span><span class="skill-bar-pct">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">Primavera P6 (Scheduling)</span><span class="skill-bar-pct">75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">MS Excel (BOQ / Reports)</span><span class="skill-bar-pct">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">Construction Drawing Reading</span><span class="skill-bar-pct">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-top"><span class="skill-bar-name">Site Supervision & Inspection</span><span class="skill-bar-pct">87%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">02. Experience & Education</div>
+  <h2 class="section-title">My Journey</h2>
+  <div class="divider"></div>
+  <div class="timeline reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2021 — 2025</div>
+      <div class="timeline-role">B.Sc. Civil Engineering</div>
+      <div class="timeline-company"><i class="fas fa-university"></i> University of Engineering & Technology (UET) Peshawar</div>
+      <div class="timeline-desc">
+        Completed a four-year degree in Civil Engineering with core studies in structural analysis, construction materials, geotechnical engineering, fluid mechanics, project management, transportation engineering, and environmental engineering. Developed hands-on skills in AutoCAD, Primavera P6, and construction documentation.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Structural Design</span>
+        <span class="tag">Geotechnical Eng.</span>
+        <span class="tag">Construction Materials</span>
+        <span class="tag">Project Management</span>
+        <span class="tag">AutoCAD</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025</div>
+      <div class="timeline-role">PEC Registration — Graduate Engineer</div>
+      <div class="timeline-company"><i class="fas fa-certificate"></i> Pakistan Engineering Council (PEC)</div>
+      <div class="timeline-desc">
+        Registered with the Pakistan Engineering Council as a Graduate Engineer in Civil discipline. PEC registration is an essential credential for engineering practice and international job applications in GCC countries, validating academic and professional standing.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">PEC Registered</span>
+        <span class="tag">Civil Engineering</span>
+        <span class="tag">Professional Credential</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025 — Present</div>
+      <div class="timeline-role">Site Engineer / QA/QC Engineer (Seeking)</div>
+      <div class="timeline-company"><i class="fas fa-hard-hat"></i> Gulf Construction Market — UAE / Dubai / KSA</div>
+      <div class="timeline-desc">
+        Actively targeting Site Engineer and QA/QC Engineer roles in the GCC construction sector. Prepared with knowledge of Gulf construction standards, ISO 9001 quality systems, ITP documentation, NCR/RFI management, concrete cube testing, and FIDIC contract frameworks. Ready for immediate deployment.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Site Engineering</span>
+        <span class="tag">QA/QC</span>
+        <span class="tag">ISO 9001</span>
+        <span class="tag">ITP / NCR / RFI</span>
+        <span class="tag">FIDIC</span>
+        <span class="tag">Dubai / UAE</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025</div>
+      <div class="timeline-role">Aspire Leaders Program — Graduate</div>
+      <div class="timeline-company"><i class="fas fa-star"></i> Aspire Institute (9-Week Leadership Program)</div>
+      <div class="timeline-desc">
+        Successfully completed the Aspire Leaders Program, a 9-week intensive leadership development course. Developed skills in leadership, strategic thinking, community impact, and professional communication, grounding reflections in infrastructure development for the KPK/Bannu region.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Leadership</span>
+        <span class="tag">Strategic Thinking</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Community Development</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">03. Technical Skills</div>
+  <h2 class="section-title">What I Bring</h2>
+  <div class="divider"></div>
+  <div class="skills-grid">
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-drafting-compass"></i></div>
+      <h3>Design & Drafting</h3>
+      <ul>
+        <li>AutoCAD 2D Civil Drawings</li>
+        <li>AutoCAD 3D Modeling</li>
+        <li>Structural Layout Plans</li>
+        <li>As-built Drawing Preparation</li>
+        <li>Shop Drawing Review</li>
+      </ul>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-clipboard-check"></i></div>
+      <h3>QA/QC Engineering</h3>
+      <ul>
+        <li>Inspection & Test Plans (ITP)</li>
+        <li>Non-Conformance Reports (NCR)</li>
+        <li>Request for Inspection (RFI)</li>
+        <li>Method Statements</li>
+        <li>Concrete Cube Testing (BS/ASTM)</li>
+        <li>Material Submittals</li>
+      </ul>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-calendar-days"></i></div>
+      <h3>Project Planning</h3>
+      <ul>
+        <li>Primavera P6 Scheduling</li>
+        <li>WBS Creation & Baselines</li>
+        <li>Progress S-Curves</li>
+        <li>Critical Path Method (CPM)</li>
+        <li>FIDIC Contract Knowledge</li>
+      </ul>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-table"></i></div>
+      <h3>Reporting & Excel</h3>
+      <ul>
+        <li>BOQ Preparation & Analysis</li>
+        <li>Daily Site Progress Reports</li>
+        <li>Concrete Cube Tracking Sheets</li>
+        <li>Material Consumption Reports</li>
+        <li>Pivot Tables & Charts</li>
+      </ul>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-hard-hat"></i></div>
+      <h3>Site Engineering</h3>
+      <ul>
+        <li>Setting Out & Layout</li>
+        <li>Formwork & Reinforcement Check</li>
+        <li>Concrete Pouring Supervision</li>
+        <li>Substructure & Superstructure Works</li>
+        <li>Snag List Management</li>
+      </ul>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon"><i class="fas fa-file-contract"></i></div>
+      <h3>Standards & Compliance</h3>
+      <ul>
+        <li>ISO 9001 Quality Systems</li>
+        <li>ASTM / BS Material Standards</li>
+        <li>Dubai Municipality Regulations</li>
+        <li>FIDIC Red/Yellow Book Basics</li>
+        <li>HSE Site Safety Awareness</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">04. Projects</div>
+  <h2 class="section-title">Featured Work</h2>
+  <div class="divider"></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-building project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">Academic Project</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Structural Design of Residential Building</h3>
+        <p class="project-desc">Designed a G+3 residential building including beam-column sizing, slab design, foundation analysis, and complete structural drawings in AutoCAD using ACI 318 design codes.</p>
+        <div class="project-tags">
+          <span class="tag">AutoCAD</span><span class="tag">Structural Design</span><span class="tag">ACI 318</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-road project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">Academic Project</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Road Alignment & Pavement Design</h3>
+        <p class="project-desc">Conducted horizontal and vertical alignment design for a 2km rural road section, including pavement layer design using CBR method and drainage provisions following AASHTO standards.</p>
+        <div class="project-tags">
+          <span class="tag">Transportation Eng.</span><span class="tag">AASHTO</span><span class="tag">CBR Method</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-water project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">Academic Project</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Water Supply & Distribution Network</h3>
+        <p class="project-desc">Designed a gravity-fed water supply network for a residential zone including pipe sizing, pressure analysis, reservoir capacity, and hydraulic grade line calculations.</p>
+        <div class="project-tags">
+          <span class="tag">Hydraulics</span><span class="tag">Water Supply</span><span class="tag">Network Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-layer-group project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">Academic Project</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Soil Investigation & Foundation Report</h3>
+        <p class="project-desc">Performed geotechnical investigation analysis including SPT interpretation, bearing capacity calculation, settlement analysis, and foundation type recommendation for a proposed commercial building.</p>
+        <div class="project-tags">
+          <span class="tag">Geotechnical</span><span class="tag">Foundation Design</span><span class="tag">SPT Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-file-lines project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">QA/QC Documentation</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">QA/QC Documentation System</h3>
+        <p class="project-desc">Developed a complete QA/QC documentation package including ITP templates, NCR forms, RFI formats, method statements, and material submittal registers aligned with ISO 9001 and Gulf standards.</p>
+        <div class="project-tags">
+          <span class="tag">ITP</span><span class="tag">NCR</span><span class="tag">RFI</span><span class="tag">ISO 9001</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <i class="fas fa-chart-gantt project-thumb-icon"></i>
+        <div class="project-thumb-overlay"></div>
+        <span class="project-thumb-label">Project Planning</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Construction Schedule — Primavera P6</h3>
+        <p class="project-desc">Created a detailed construction master schedule in Primavera P6 for a multi-storey building project, including WBS breakdown, resource loading, baseline, and S-curve progress tracking.</p>
+        <div class="project-tags">
+          <span class="tag">Primavera P6</span><span class="tag">CPM</span><span class="tag">Scheduling</span><span class="tag">S-Curve</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-tag">05. Certifications & Credentials</div>
+  <h2 class="section-title">Qualifications</h2>
+  <div class="divider"></div>
+  <div class="certs-grid">
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-id-card"></i></div>
+      <div class="cert-info">
+        <h4>PEC Registered Engineer</h4>
+        <p>Pakistan Engineering Council — Registered Graduate Engineer in Civil Discipline</p>
+        <span>2025 · Civil Engineering</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="cert-info">
+        <h4>B.Sc. Civil Engineering</h4>
+        <p>University of Engineering & Technology (UET) Peshawar — Four-Year Honours Degree</p>
+        <span>2025 · UET Peshawar</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-star"></i></div>
+      <div class="cert-info">
+        <h4>Aspire Leaders Program</h4>
+        <p>9-Week International Leadership Development Certificate — Aspire Institute</p>
+        <span>2025 · Leadership & Strategy</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-drafting-compass"></i></div>
+      <div class="cert-info">
+        <h4>AutoCAD Proficiency</h4>
+        <p>Civil Engineering 2D and 3D Drawing — Proficient in industry-standard drafting workflows</p>
+        <span>Civil Drafting · AutoCAD</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-calendar-check"></i></div>
+      <div class="cert-info">
+        <h4>Primavera P6 — Project Scheduling</h4>
+        <p>Construction project planning, scheduling, and progress monitoring using Oracle P6</p>
+        <span>Project Planning · P6</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="cert-info">
+        <h4>QA/QC Knowledge — Gulf Standards</h4>
+        <p>ISO 9001, ITP/NCR/RFI documentation, ASTM/BS testing standards, FIDIC basics</p>
+        <span>ISO 9001 · Gulf Construction</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOWNLOAD CV -->
+<section id="download">
+  <div class="section-tag">06. Resume / CV</div>
+  <h2 class="section-title">Download My CV</h2>
+  <div class="divider"></div>
+  <div class="download-wrapper reveal">
+    <h2>Get My Full Resume</h2>
+    <p>Download my professionally crafted CV, formatted for Gulf construction industry standards and ATS systems. Available in both PDF and MS Word formats.</p>
+    <div class="download-btns">
+      <a href="Riaz_Ullah_CV.pdf" download="Riaz_Ullah_CV.pdf" class="btn-download btn-dl-pdf">
+        <i class="fas fa-file-pdf btn-download-icon"></i>
+        <div>
+          <div style="font-size:0.75rem;opacity:0.8;font-family:var(--font-mono)">DOWNLOAD</div>
+          <div>CV — PDF Format</div>
+        </div>
+      </a>
+      <a href="Riaz_Ullah_CV.docx" download="Riaz_Ullah_CV.docx" class="btn-download btn-dl-word">
+        <i class="fas fa-file-word btn-download-icon"></i>
+        <div>
+          <div style="font-size:0.75rem;opacity:0.8;font-family:var(--font-mono)">DOWNLOAD</div>
+          <div>CV — Word Format</div>
+        </div>
+      </a>
+    </div>
+    <p class="download-note">
+      ⚠️ TO ENABLE DOWNLOADS: Place your CV files named <strong style="color:var(--gold)">Riaz_Ullah_CV.pdf</strong> and <strong style="color:var(--gold)">Riaz_Ullah_CV.docx</strong> in the same folder as this HTML file.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">07. Contact</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Open to Gulf Opportunities</h3>
+      <p>I am actively seeking Site Engineer and QA/QC Engineer positions in Dubai, Abu Dhabi, Saudi Arabia, and across the GCC. If you have an opportunity that matches my profile, I would love to hear from you.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">riazullah@email.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div class="contact-item-label">WhatsApp</div>
+            <div class="contact-item-value">+92 XXX XXX XXXX</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-location-dot"></i></div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Bannu, KPK, Pakistan</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fab fa-linkedin"></i></div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value">linkedin.com/in/riazullah</div>
+          </div>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:riazullah@email.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your full name" id="fname">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" id="femail">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="e.g. Job Opportunity — Site Engineer Dubai" id="fsubject">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message here..." id="fmessage"></textarea>
+        </div>
+        <button class="btn-send" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+        <div id="form-feedback" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gold);margin-top:8px;display:none;">
+          ✓ Message ready — opening email client...
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Riaz Ullah</div>
+  <div class="footer-copy">
+    © 2025 <span>Riaz Ullah</span> · Civil Engineer · PEC Registered · Built with ♥
+  </div>
+  <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i></a>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      follower.style.left = e.clientX + 'px';
+      follower.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button, .skill-card, .project-card, .cert-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2)';
+      follower.style.transform = 'translate(-50%,-50%) scale(1.4)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      follower.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
+  });
+
+  // Hamburger menu
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.padding = window.scrollY > 60 ? '14px 60px' : '20px 60px';
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Skill bar animation
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.about-skills').forEach(s => barObserver.observe(s));
+
+  // Contact form — mailto fallback
+  function sendMessage() {
+    const name = document.getElementById('fname').value;
+    const email = document.getElementById('femail').value;
+    const subject = document.getElementById('fsubject').value;
+    const message = document.getElementById('fmessage').value;
+    if (!name || !email || !message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    const mailto = `mailto:riazullah@email.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+    window.location.href = mailto;
+    document.getElementById('form-feedback').style.display = 'block';
+  }
+
+  // Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
